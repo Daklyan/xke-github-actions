@@ -22,8 +22,11 @@ jobs:
           node-version: '8.x'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Run build
-        run: npm install && npm test && npm run build
+      - name: Install, test and build
+        run: |
+          npm install
+          npm test
+          npm run build
 
-      - name: Run a multi-line script
+      - name: Done
         run: echo "Done!"
