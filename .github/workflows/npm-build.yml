@@ -24,7 +24,8 @@ jobs:
       - name: build image docker
         id: docker_build
         run: |
-          docker build -t xebxke/cactus:${BRANCH#refs/heads/}-$COMMIT .
+          docker build -t xebxke/toast:${BRANCH#refs/heads/}-$COMMIT .
+          echo "::set-output name=docker_tag::xebxke/toast:${BRANCH#refs/heads/}-$COMMIT"
           echo "Docker builded"
           
       - name: Done
