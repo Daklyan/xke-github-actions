@@ -7,6 +7,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    
+    env:
+      BRANCH: ${{ github.ref }}
+      COMMIT: ${{ github.sha }}
 
     steps:
       - uses: actions/checkout@v2
@@ -26,7 +30,7 @@ jobs:
         run: |
           docker build -t xebxke/toast:${BRANCH#refs/heads/}-$COMMIT .
           echo "::set-output name=docker_tag::xebxke/toast:${BRANCH#refs/heads/}-$COMMIT"
-          echo "Docker builded"
+          echo "Docker image builded"
           
       - name: Done
         run: echo "Done!"
